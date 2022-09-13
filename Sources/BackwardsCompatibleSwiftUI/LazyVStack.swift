@@ -9,15 +9,26 @@ struct LazyVStack<Content> : View where Content : View {
     var body: some View {
         Group {
             if #available(OSX 11.0, iOS 14.0, tvOS 14.0, watchOS 7.0, *) {
-                //This AnyView prevents a bug in the Framework. Learn more https://swiftui-lab.com/bug-os-check/
-                AnyView(SwiftUI.LazyVStack(alignment: alignment, spacing: spacing, content: content))
+                SwiftUI.LazyVStack(
+                    alignment: alignment,
+                    spacing: spacing,
+                    content: content
+                )
             } else {
-                VStack(alignment: alignment, spacing: spacing, content: content)
+                VStack(
+                    alignment: alignment,
+                    spacing: spacing,
+                    content: content
+                )
             }
         }
     }
 
-    init(alignment: HorizontalAlignment = .center, spacing: CGFloat? = nil, @ViewBuilder content: @escaping () -> Content) {
+    init(
+        alignment: HorizontalAlignment = .center,
+        spacing: CGFloat? = nil,
+        @ViewBuilder content: @escaping () -> Content
+    ) {
         self.alignment = alignment
         self.spacing = spacing
         self.content = content
