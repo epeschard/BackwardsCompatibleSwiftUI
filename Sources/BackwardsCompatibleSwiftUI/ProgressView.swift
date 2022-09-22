@@ -1,12 +1,12 @@
 import SwiftUI
 
 @available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-struct ProgressView<Content> : View where Content : View {
+public struct ProgressView<Content> : View where Content : View {
     let title: String
     let style: UIActivityIndicatorView.Style
     let content: () -> Content
 
-    var body: some View {
+    public var body: some View {
         Group {
             if #available(OSX 11.0, iOS 14.0, tvOS 14.0, watchOS 7.0, *) {
                 SwiftUI.ProgressView(title)
@@ -23,7 +23,7 @@ struct ProgressView<Content> : View where Content : View {
         }
     }
 
-    init(
+    public init(
         title: String,
         style: UIActivityIndicatorView.Style = .large,
         @ViewBuilder content: @escaping () -> Content

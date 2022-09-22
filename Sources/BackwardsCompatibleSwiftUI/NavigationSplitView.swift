@@ -1,12 +1,12 @@
 import SwiftUI
 
 @available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-struct NavigationSplitView<Content> : View where Content : View {
+public struct NavigationSplitView<Content> : View where Content : View {
     let sidebar: () -> Content
     let content: (() -> Content)?
     let detail: () -> Content
 
-    var body: some View {
+    public var body: some View {
         Group {
             if let content = content {
                 if #available(OSX 13.0, iOS 16.0, tvOS 16.0, watchOS 9.0, *) {
@@ -38,7 +38,7 @@ struct NavigationSplitView<Content> : View where Content : View {
         }
     }
 
-    init(
+    public init(
         @ViewBuilder sidebar: @escaping () -> Content,
         @ViewBuilder content: @escaping () -> Content,
         @ViewBuilder detail: @escaping () -> Content
